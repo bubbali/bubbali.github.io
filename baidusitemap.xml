@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite-url/2019/06/30/Salesforce%20Debugger%20from%20VS%20Code/</loc>
+    <lastmod>2021-01-17</lastmod>
+  </url>
+  <url>
     <loc>http://yoursite-url/2019/06/09/Using%20SalesforceDX(SFDX)%20without%20Scratch%20Org/</loc>
     <lastmod>2021-01-17</lastmod>
   </url>
@@ -34,10 +38,6 @@
   </url>
   <url>
     <loc>http://yoursite-url/2019/10/05/Salesforce%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/</loc>
-    <lastmod>2021-01-17</lastmod>
-  </url>
-  <url>
-    <loc>http://yoursite-url/2019/06/30/Salesforce%20Debugger%20from%20VS%20Code/</loc>
     <lastmod>2021-01-17</lastmod>
   </url>
   <url>
