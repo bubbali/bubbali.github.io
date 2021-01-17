@@ -210,14 +210,14 @@
 
           
           <li>
-            <a href="/archive/">Archives</a>
+            <a href="/about/">About</a>
           </li>
           
           
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/archive/">Archives</a>
           </li>
           
           
@@ -418,32 +418,32 @@
 </li>
 <li><ol start="2">
 <li>生成private key，存储在server.key文件<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">openssl</span> <span class="selector-tag">genrsa</span> <span class="selector-tag">-des3</span> <span class="selector-tag">-passout</span> <span class="selector-tag">pass</span><span class="selector-pseudo">:SomePassword</span> <span class="selector-tag">-out</span> <span class="selector-tag">server</span><span class="selector-class">.pass</span><span class="selector-class">.key</span> 2048</span><br><span class="line"><span class="selector-tag">openssl</span> <span class="selector-tag">rsa</span> <span class="selector-tag">-passin</span> <span class="selector-tag">pass</span><span class="selector-pseudo">:SomePassword</span> <span class="selector-tag">-in</span> <span class="selector-tag">server</span><span class="selector-class">.pass</span><span class="selector-class">.key</span> <span class="selector-tag">-out</span> <span class="selector-tag">server</span><span class="selector-class">.key</span></span><br></pre></td></tr></table></figure>
-<img src="https://upload-images.jianshu.io/upload_images/14975804-6804570a3fc2818b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="生成server.key"><br>现在<em>testJWT</em>文件夹下有两个文件<em>server.key、server.pass.key</em>，<em>server.pass.key</em>文件不会再用到，可以将其删除。</li>
+<img src="GenerateServerKye.png" alt="生成server.key"><br>现在<em>testJWT</em>文件夹下有两个文件<em>server.key、server.pass.key</em>，<em>server.pass.key</em>文件不会再用到，可以将其删除。</li>
 </ol>
 </li>
 <li><ol start="3">
 <li>生成证书签名，存储在server.csr文件中<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -<span class="built_in">new</span> -key <span class="keyword">server</span>.key -<span class="keyword">out</span> <span class="keyword">server</span>.csr</span><br></pre></td></tr></table></figure>
-<img src="https://upload-images.jianshu.io/upload_images/14975804-2669d84ef9aca7eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="生成server.csr"></li>
+<img src="GenerateServerCSR.png" alt="生成server.csr"></li>
 </ol>
 </li>
 <li><ol start="4">
 <li>根据server.key和 server.csr文件，生成自签名证书。<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -req -sha256 -days <span class="number">365</span> -<span class="keyword">in</span> <span class="keyword">server</span>.csr -signkey <span class="keyword">server</span>.key -<span class="keyword">out</span> <span class="keyword">server</span>.crt</span><br></pre></td></tr></table></figure>
-<img src="https://upload-images.jianshu.io/upload_images/14975804-73b77f512e6341fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="生成server.crt"><br>目前为止，已经生成了JWT所需的证书，下一步新建Connect App的时候会用到。<h3 id="创建Connect-App"><a href="#创建Connect-App" class="headerlink" title="创建Connect App"></a>创建Connect App</h3>在Salesforce中新建Connect App应该是比较熟悉的了，不清楚的话，可以参考一下<a href="https://www.jianshu.com/p/2f0face794f1" target="_blank" rel="noopener">使用Postman对Salesforce进行接口测试</a>，需要说明一下两点：</li>
+<img src="GenerateServerCRT.png" alt="生成server.crt"><br>目前为止，已经生成了JWT所需的证书，下一步新建Connect App的时候会用到。<h3 id="创建Connect-App"><a href="#创建Connect-App" class="headerlink" title="创建Connect App"></a>创建Connect App</h3>在Salesforce中新建Connect App应该是比较熟悉的了，不清楚的话，可以参考一下<a href="https://www.jianshu.com/p/2f0face794f1" target="_blank" rel="noopener">使用Postman对Salesforce进行接口测试</a>，需要说明一下两点：</li>
 </ol>
 </li>
 <li><ol>
-<li>针对JWT认证方式，需要在新建App过程中，上传<strong>server.crt</strong>自签名证书。<br><img src="https://upload-images.jianshu.io/upload_images/14975804-b4364dad8ec136dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="上传证书"></li>
+<li>针对JWT认证方式，需要在新建App过程中，上传<strong>server.crt</strong>自签名证书。<br><img src="UploadTheCRT.png" alt="上传证书"></li>
 </ol>
 </li>
 <li><ol start="2">
-<li>编辑App的OAuth Policies，修改为<strong>Admin approved users are pre-authorized</strong>方式<br><img src="https://upload-images.jianshu.io/upload_images/14975804-a76a5153a49e4bdc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="修改认证属性"></li>
+<li>编辑App的OAuth Policies，修改为<strong>Admin approved users are pre-authorized</strong>方式<br><img src="UpdateAuth.png" alt="修改认证属性"></li>
 </ol>
 </li>
 </ul>
 <p>随后你可以通过<strong>Permission set</strong>管理给App分配CI用户，方便起见，这里分配给简档<strong>System Administrator</strong>的用户。保存App后，需要保存一下<strong>Consumer Key</strong>，接下来的测试我们需要用到<strong>Consumer Key</strong>。</p>
-<h3 id="连接测试"><a href="#连接测试" class="headerlink" title="连接测试"></a>连接测试</h3><p>现在App已经准备好，证书也上传到App，那我们是否能成功的连接到Salesforce呢？<br><img src="https://upload-images.jianshu.io/upload_images/14975804-78996af0b8dafc74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新建的Connect App"><br>通过以下命令测试，尝试建立连接：</p>
+<h3 id="连接测试"><a href="#连接测试" class="headerlink" title="连接测试"></a>连接测试</h3><p>现在App已经准备好，证书也上传到App，那我们是否能成功的连接到Salesforce呢？<br><img src="NewAppConnect.png" alt="新建的Connect App"><br>通过以下命令测试，尝试建立连接：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export CONSUMER_KEY=<span class="number">3</span>MVG9pe2TCoA1Pf4Sl71bGc3xBuVp.h8zly2rk_4gCeP0whCxrONIcvjPTkmTw3_.H3LNAA_QVIYuONIoXU4o <span class="comment">//Connect App Consumer Key value</span></span><br><span class="line">export JWT_KEY_FILE=<span class="regexp">/Users/</span>bubba<span class="regexp">/Desktop/</span>testJWT/server.key</span><br><span class="line">export HUB_USERNAME=lj1377736<span class="meta">@brave</span>-bear-p3qvk9.com</span><br><span class="line">sfdx <span class="string">force:</span><span class="string">auth:</span><span class="string">jwt:</span>grant --clientid $&#123;CONSUMER_KEY&#125; --username $&#123;HUB_USERNAME&#125; --jwtkeyfile $&#123;JWT_KEY_FILE&#125;   --instanceurl <span class="string">https:</span><span class="comment">//brave-bear-p3qvk9-dev-ed.my.salesforce.com -a testJWT</span></span><br></pre></td></tr></table></figure>
-<p>如果能看到以下截图内容，说明已经成功连接到了Salesforce，也可以通过<strong>sfdx force:org:list</strong>命令来查看已认证的Organization.<br><img src="https://upload-images.jianshu.io/upload_images/14975804-f169c35da6392bb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>如果能看到以下截图内容，说明已经成功连接到了Salesforce，也可以通过<strong>sfdx force:org:list</strong>命令来查看已认证的Organization.<br><img src="Success.png" alt="Success"></p>
 <h1 id="下一步"><a href="#下一步" class="headerlink" title="下一步"></a>下一步</h1><p>相信您已利用JWT成功的建立了与Salesforce的连接，接下来还需要结合自动化部署工具（Travis、Jenkins）运行到项目中，提供两个资源模板供大家参考：</p>
 <ul>
 <li><a href="https://github.com/forcedotcom/sfdx-travisci" target="_blank" rel="noopener">Travis </a></li>

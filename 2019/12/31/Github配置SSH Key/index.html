@@ -210,14 +210,14 @@
 
           
           <li>
-            <a href="/archive/">Archives</a>
+            <a href="/about/">About</a>
           </li>
           
           
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/archive/">Archives</a>
           </li>
           
           
@@ -419,9 +419,9 @@
 </ul>
 <p>还记得第一步生成的<em>id_rsa.pub</em>文件么，复制文件的内容，然后配置到Github账户下。</p>
 <figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 复制文本内容</span></span><br><span class="line">$ pbcopy &lt; ~<span class="regexp">/.ssh/i</span>d_rsa.pub</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14975804-ccdb86402579061b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Settings.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14975804-8ec055ef64f49ca4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="New SSH Key.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14975804-25cf926daafd703c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Add SSH Key.png"></p>
+<p><img src="GitHubSetting.png" alt="Settings.png"></p>
+<p><img src="NewSSHKey.png" alt="New SSH Key.png"></p>
+<p><img src="AddSSHKey.png" alt="Add SSH Key.png"></p>
 <p>将公钥复制到<strong>key</strong>中，Title可以随便命名，尽量通俗易懂，能够区分出是本地机器即可。<br>配置完成后，通过以下命令查看一下是否可以登录成功：</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>ssh -T git<span class="variable">@github</span>.com</span><br></pre></td></tr></table></figure>
 <p>本地机器可能会管理Github与Gitlab账号，这样就会存在两套公钥与私钥。需要注意一下两点：</p>

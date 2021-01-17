@@ -210,14 +210,14 @@
 
           
           <li>
-            <a href="/archive/">Archives</a>
+            <a href="/about/">About</a>
           </li>
           
           
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/archive/">Archives</a>
           </li>
           
           
@@ -421,7 +421,7 @@
 </ul>
 <p>比如我尝试在新建的<em>test</em>分支上添加了一个文件。</p>
 <figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">$</span> touch testFile <span class="comment">//新建一个testFile的文件</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14975804-d1a1bee5331338cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="testfile内容"><br>如果此时你切换到Master分支，会发现并不存在这个文件，这是因为当前分支操作在<em>test</em>分支上。</p>
+<p><img src="TestFile.png" alt="testfile内容"><br>如果此时你切换到Master分支，会发现并不存在这个文件，这是因为当前分支操作在<em>test</em>分支上。</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将文件提交到test分支</span></span><br><span class="line">$ git add testfile </span><br><span class="line">$ git commit -<span class="keyword">m</span> 'Add <span class="keyword">test</span> <span class="keyword">file</span> <span class="keyword">by</span> <span class="keyword">test</span> branch'</span><br></pre></td></tr></table></figure>
 <ul>
 <li>合并操作</li>
