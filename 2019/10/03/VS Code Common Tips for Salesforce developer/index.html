@@ -401,24 +401,24 @@
 <ul>
 <li>Auth an org</li>
 <li>Create a project for your org<br>These two things don’t come into anything.  you can do anything firstly. I will auth an org firstly. after auth an org successfully. We can create a project based on the specifically org. In this section.  Let’s auth an org.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sfdx <span class="string">force:</span><span class="string">auth:</span><span class="string">web:</span>login -a BubbaTest  -r <span class="string">https:</span><span class="comment">//login.salesforce.com //instance url</span></span><br></pre></td></tr></table></figure>
-<img src="https://upload-images.jianshu.io/upload_images/14975804-b757e4cac7bee540.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Auth step"><br><img src="https://upload-images.jianshu.io/upload_images/14975804-bbf33c0136e984e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Auth success"><br>After you auth the org successfully. you can check by the command:<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sfdx</span> <span class="selector-tag">force</span><span class="selector-pseudo">:org</span><span class="selector-pseudo">:list</span></span><br></pre></td></tr></table></figure>
+<img src="AuthSteps.png" alt="Auth step"><br><img src="AuthSuccess.png" alt="Auth success"><br>After you auth the org successfully. you can check by the command:<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sfdx</span> <span class="selector-tag">force</span><span class="selector-pseudo">:org</span><span class="selector-pseudo">:list</span></span><br></pre></td></tr></table></figure>
 Importantly. Not only you can develop based on the authed org,  but also you can open the org by using the command:<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sfdx <span class="keyword">force</span>:org:<span class="keyword">open</span> -u <span class="keyword">alias</span></span><br></pre></td></tr></table></figure>
 It’s amazing. Why we can do this? That’s because of the access token stored in our local machine. you can find the answer in the next section.</li>
 </ul>
 <ol start="2">
-<li>Local file Configure<br>Once we auth an org successfully. We can use it permanently unless you revoke it. Let’s see what happened after the auth process. After you auth the org. The org of the definition file will be stored in the root/.sfdx direction. you can find a folder named .sfdx in your root direction. open it by vscode.<br><img src="https://upload-images.jianshu.io/upload_images/14975804-82146d80855cd027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Org&#39;s definition"><br>You should pay attention to the access token、refresh token and client id. Through this information. The local machine could request a connection with the remote server resource. for example. you can request any rest api source. and not limit development. </li>
+<li>Local file Configure<br>Once we auth an org successfully. We can use it permanently unless you revoke it. Let’s see what happened after the auth process. After you auth the org. The org of the definition file will be stored in the root/.sfdx direction. you can find a folder named .sfdx in your root direction. open it by vscode.<br><img src="OrgDefinitation.png" alt="Org&#39;s definition"><br>You should pay attention to the access token、refresh token and client id. Through this information. The local machine could request a connection with the remote server resource. for example. you can request any rest api source. and not limit development. </li>
 </ol>
 <h1 id="Developer-Process"><a href="#Developer-Process" class="headerlink" title="Developer Process"></a>Developer Process</h1><ol>
 <li>Create local project<br>Before we start development. The second thing is that you should create a project.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sfdx <span class="string">force:</span><span class="string">create:</span>project  -n projectName -x <span class="comment">//Generates a default manifest (package.xml) for fetching Apex, Visualforce, Lightning web components, Aura components, and static resources.</span></span><br></pre></td></tr></table></figure>
-<img src="https://upload-images.jianshu.io/upload_images/14975804-39adec5a07da5ec5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Create project"><br>We open it in vscode. There is no connection with the remote org currently. So we will set an org for this project.</li>
+<img src="CreateProject.png" alt="Create project"><br>We open it in vscode. There is no connection with the remote org currently. So we will set an org for this project.</li>
 <li>Set Default Org<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sfdx force:config:<span class="builtin-name">set</span> <span class="attribute">defaultusername</span>=BubbaTest</span><br></pre></td></tr></table></figure>
-Also, you can use <strong>command + p</strong>. And input <strong>&gt; set a default org</strong>. After this operation. you will see the below info.<br><img src="https://upload-images.jianshu.io/upload_images/14975804-bfad2c2373d85dff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Set default org"><br>The reparation work has completed. We can start the development next step.</li>
+Also, you can use <strong>command + p</strong>. And input <strong>&gt; set a default org</strong>. After this operation. you will see the below info.<br><img src="SetDefaultOrg.png" alt="Set default org"><br>The reparation work has completed. We can start the development next step.</li>
 <li>Retrieve the source &amp; Deploy source</li>
 </ol>
 <ul>
 <li>Retrieve code from remote org<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sfdx</span> <span class="selector-tag">force</span><span class="selector-pseudo">:source</span><span class="selector-pseudo">:retrieve</span> <span class="selector-tag">-x</span> <span class="selector-tag">package</span><span class="selector-class">.xml</span> <span class="selector-tag">location</span></span><br><span class="line"><span class="selector-tag">sfdx</span> <span class="selector-tag">force</span><span class="selector-pseudo">:source</span><span class="selector-pseudo">:retrieve</span> <span class="selector-tag">-</span> <span class="selector-tag">p</span> <span class="selector-tag">code</span> <span class="selector-tag">location</span></span><br><span class="line"><span class="selector-tag">sfdx</span> <span class="selector-tag">force</span><span class="selector-pseudo">:source</span><span class="selector-pseudo">:retrieve</span> <span class="selector-tag">-m</span> "<span class="selector-tag">ApexClass</span><span class="selector-pseudo">:myclass"</span></span><br></pre></td></tr></table></figure></li>
 <li>Deploy code to remote org<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sfdx</span> <span class="selector-tag">force</span><span class="selector-pseudo">:source</span><span class="selector-pseudo">:deploy</span> <span class="selector-tag">-x</span> <span class="selector-tag">package</span><span class="selector-class">.xml</span> <span class="selector-tag">location</span></span><br><span class="line"><span class="selector-tag">sfdx</span> <span class="selector-tag">force</span><span class="selector-pseudo">:source</span><span class="selector-pseudo">:deploy</span> <span class="selector-tag">-</span> <span class="selector-tag">p</span> <span class="selector-tag">code</span> <span class="selector-tag">location</span></span><br><span class="line"><span class="selector-tag">sfdx</span> <span class="selector-tag">force</span><span class="selector-pseudo">:source</span><span class="selector-pseudo">:deploy</span> <span class="selector-tag">-m</span> "<span class="selector-tag">ApexClass</span><span class="selector-pseudo">:myclass"</span></span><br></pre></td></tr></table></figure>
-if you don’t like the command. also, you can use the shortcut integrated in the Salesforce Extension Pack.<br><img src="https://upload-images.jianshu.io/upload_images/14975804-4554ec0c7dda0dd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Development"></li>
+if you don’t like the command. also, you can use the shortcut integrated in the Salesforce Extension Pack.<br><img src="Deployment.png" alt="Development"></li>
 </ul>
 <ol start="4">
 <li>Unit Test code converge<br>Now. we have completed the development test and unit test. As for Salesforce development. The unit test coverage must above 75%. you can execute the unit test in the developer console and check the coverage. Now. an alternate way you can do it by vscode.</li>
@@ -426,31 +426,31 @@ if you don’t like the command. also, you can use the shortcut integrated in th
 <ul>
 <li><p>Add the below statement to the workspace setting in vscode.</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"salesforcedx-vscode-core.retrieve-test-code-coverage":</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14975804-f1813c1fd887a8da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Show unit test converage"></p>
+<p><img src="ShowUTCoverage.png" alt="Show unit test converage"></p>
 </li>
 <li><p>Run the test command</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">sfdx</span> <span class="selector-tag">force</span><span class="selector-pseudo">:apex</span><span class="selector-pseudo">:test</span><span class="selector-pseudo">:run</span> <span class="selector-tag">--tests</span> <span class="selector-tag">MyTest</span><span class="selector-class">.myTest</span> <span class="selector-tag">--loglevel</span> <span class="selector-tag">error</span> <span class="selector-tag">--codecoverage</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14975804-66e768e301f88905.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Run the unit test"></p>
+<p><img src="RunTU.png" alt="Run the unit test"></p>
 </li>
-<li><p>Click the icon<br><img src="https://upload-images.jianshu.io/upload_images/14975804-cc189275b235a3d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="show coverage"></p>
+<li><p>Click the icon<br><img src="ShowCoverage2.png" alt="show coverage"></p>
 </li>
 </ul>
 <ol start="5">
-<li>Compare with the remote org’s file<br>There are some conflicts with the remote org. So we need to compare the specific file.<br><img src="https://upload-images.jianshu.io/upload_images/14975804-c37d696e3cd3578b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Compare menu"></li>
+<li>Compare with the remote org’s file<br>There are some conflicts with the remote org. So we need to compare the specific file.<br><img src="Compare.png" alt="Compare menu"></li>
 </ol>
 <h1 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h1><ol>
 <li>Execute anonymous statement</li>
 </ol>
 <ul>
-<li>Create a file in the local project. Suffix with .apex<br><img src="https://upload-images.jianshu.io/upload_images/14975804-9c5d5cfb6df8f189.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Create a file with mytest.apex"></li>
-<li><strong>command + p</strong> and input &gt;<strong>execute anonymous apex</strong><br><img src="https://upload-images.jianshu.io/upload_images/14975804-a9195613555591fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Execute anonymous apex"></li>
+<li>Create a file in the local project. Suffix with .apex<br><img src="CreateAFile.png" alt="Create a file with mytest.apex"></li>
+<li><strong>command + p</strong> and input &gt;<strong>execute anonymous apex</strong><br><img src="ExecuteApex.png" alt="Execute anonymous apex"></li>
 </ul>
 <ol start="2">
 <li>Execute SQQL command<br>The operation is similar to execute an anonymous statement. </li>
 </ol>
 <ul>
 <li>Create a file in the local project. Suffix with .apex or any class file</li>
-<li><strong>command + p</strong> and input &gt;<strong>execute soql query</strong><br><img src="https://upload-images.jianshu.io/upload_images/14975804-e0574156442c690c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Execute soql query"></li>
+<li><strong>command + p</strong> and input &gt;<strong>execute soql query</strong><br><img src="ExecuteSOQL.png" alt="Execute soql query"></li>
 </ul>
 
 
