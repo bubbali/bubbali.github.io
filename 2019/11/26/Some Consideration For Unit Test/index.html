@@ -210,14 +210,14 @@
 
           
           <li>
-            <a href="/archive/">Archives</a>
+            <a href="/about/">About</a>
           </li>
           
           
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/archive/">Archives</a>
           </li>
           
           
@@ -418,8 +418,8 @@
 </ul>
 <h2 id="New-Custom-setting-data-in-the-test-method"><a href="#New-Custom-setting-data-in-the-test-method" class="headerlink" title="New Custom setting data in the test method"></a>New Custom setting data in the test method</h2><p>When you want to cache some data in Salesforce. The custom setting is your solution. There are two types of custom settings. </p>
 <ul>
-<li>List custom settings<br><img src="https://upload-images.jianshu.io/upload_images/14975804-722ee94d70b30fff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="List Test"></li>
-<li>Hierarchy custom settings<br><img src="https://upload-images.jianshu.io/upload_images/14975804-cb47be5352510a4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Hierarchy Test"></li>
+<li>List custom settings<br><img src="ListTest.png" alt="List Test"></li>
+<li>Hierarchy custom settings<br><img src="HierarchyTest.png" alt="Hierarchy Test"></li>
 </ul>
 <p>The main difference is that whether your data various for specific profiles and users.  Now. I have set a value for the custom setting. Let’s  access the data in the Unit Test:</p>
 <figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@isTest</span><br><span class="line">static void custom<span class="constructor">SettingTest()</span>&#123;</span><br><span class="line">    Map&lt;String,ListTest__c&gt; listTestData = <span class="module-access"><span class="module"><span class="identifier">ListTest__c</span>.</span></span>get<span class="constructor">All()</span>;</span><br><span class="line">    system.debug(listTestData.size<span class="literal">()</span>);</span><br><span class="line">    HierarchyTest__c hierarchyTestData = <span class="module-access"><span class="module"><span class="identifier">HierarchyTest__c</span>.</span></span>get<span class="constructor">OrgDefaults()</span>;</span><br><span class="line">    system.debug(hierarchyTestData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
