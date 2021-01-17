@@ -210,14 +210,14 @@
 
           
           <li>
-            <a href="/categories/">Categories</a>
+            <a href="/about/">About</a>
           </li>
           
           
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/categories/">Categories</a>
           </li>
           
           
@@ -334,7 +334,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">658</span> In Total
+              Words <span class="post-count">659</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- 不蒜子统计 start -->
@@ -394,7 +394,7 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <p>I wrote an article about the <a href="https://www.jianshu.com/p/f9e10ce1cc1f" target="_blank" rel="noopener">Unit Test for Salesforce</a>. If you haven’t read this. Recommend you strongly. Today. Let’s see some scenarios in the Unit Test. This article can be a supplement for the previous article.</p>
+        <p>I wrote an article about the <a href="/2019/09/16/Mock%20Framework%20For%20Unit%20Test/">Unit Test for Salesforce</a>. If you haven’t read this. Recommend you strongly. Today. Let’s see some scenarios in the Unit Test. This article can be a supplement for the previous article.</p>
 <h1 id="Common-Scenarios"><a href="#Common-Scenarios" class="headerlink" title="Common Scenarios"></a>Common Scenarios</h1><h2 id="How-can-access-the-private-variable-or-method-of-tested-Class"><a href="#How-can-access-the-private-variable-or-method-of-tested-Class" class="headerlink" title="How can access the private variable or method of tested Class"></a>How can access the private variable or method of tested Class</h2><p>As we all known. The class or method or variable has the access modifiers(private、public、global). Here is class A. </p>
 <figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> A &#123;</span><br><span class="line">    <span class="keyword">public</span> static <span class="keyword">Integer</span> subtraction(<span class="keyword">Integer</span> a, <span class="keyword">Integer</span> b)&#123;</span><br><span class="line">        <span class="keyword">return</span> addition(a,-b);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> static <span class="keyword">Integer</span> addition(<span class="keyword">Integer</span> a, <span class="keyword">Integer</span> b)&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>And the subtraction method is a public modifier. The addition method is a private modifier. There is a question. if I don’t update the modifier. How can I test the addition method in Unit Test? Salesforce supply a annotate <strong>TestVisible</strong>, if you annotate the private method or variable with Test Visible. You can access these attributes or methods in UT. Before you add this annotation. if you want to invoke this private method. you will get the below error:</p>
@@ -414,7 +414,10 @@
 <ul>
 <li>User、Profile、Organization、RecordType</li>
 <li>AsyncApexJob、CronTrigger</li>
-<li>ApexClass、ApexTrigger、ApexComponent、ApexPage<br>So if you want to use the above data. Just use it directly. I want to remind you that when you using the user data in UT. Please be careful. Your unit test may be failed in another environment. An alternative solution is that you could use the  <strong>System.runas()</strong>. if you are interested in this method. please see the detail by this <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_testing_tools_runas.htm" target="_blank" rel="noopener">link</a><h2 id="New-Custom-setting-data-in-the-test-method"><a href="#New-Custom-setting-data-in-the-test-method" class="headerlink" title="New Custom setting data in the test method"></a>New Custom setting data in the test method</h2>When you want to cache some data in Salesforce. The custom setting is your solution. There are two types of custom settings. </li>
+<li>ApexClass、ApexTrigger、ApexComponent、ApexPage<br>So if you want to use the above data. Just use it directly. I want to remind you that when you using the user data in UT. Please be careful. Your unit test may be failed in another environment. An alternative solution is that you could use the  <strong>System.runas()</strong>. if you are interested in this method. please see the detail by this <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_testing_tools_runas.htm" target="_blank" rel="noopener">link</a></li>
+</ul>
+<h2 id="New-Custom-setting-data-in-the-test-method"><a href="#New-Custom-setting-data-in-the-test-method" class="headerlink" title="New Custom setting data in the test method"></a>New Custom setting data in the test method</h2><p>When you want to cache some data in Salesforce. The custom setting is your solution. There are two types of custom settings. </p>
+<ul>
 <li>List custom settings<br><img src="https://upload-images.jianshu.io/upload_images/14975804-722ee94d70b30fff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="List Test"></li>
 <li>Hierarchy custom settings<br><img src="https://upload-images.jianshu.io/upload_images/14975804-cb47be5352510a4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Hierarchy Test"></li>
 </ul>

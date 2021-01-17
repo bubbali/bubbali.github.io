@@ -210,14 +210,14 @@
 
           
           <li>
-            <a href="/categories/">Categories</a>
+            <a href="/about/">About</a>
           </li>
           
           
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/categories/">Categories</a>
           </li>
           
           
@@ -398,7 +398,10 @@
 <h1 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h1><ul>
 <li>Git安装<br> Linux、MAC、Window不同的环境，安装步骤有所区别，可以参考这篇<a href="https://linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/" target="_blank" rel="noopener">博客</a>。</li>
 <li>Git配置<br>为了在分布式管理中区分不同的开发者，每台本地电脑需要配置用户名信息；Git的配置信息有三个层级，从高到低分别是system、global、local级别，低级别的配置信息可以覆盖高级别的配置信息，意味着local级别可以配置任意的用户名信息。以配置当前用户global级别的配置信息为例使用以下命令：<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config <span class="params">--global</span> user.name <span class="string">"USERNAME"</span></span><br><span class="line">git config <span class="params">--global</span> user.email <span class="string">" EMAIL"</span></span><br><span class="line">git config <span class="params">--global</span>  <span class="params">--list</span> <span class="string">//system</span>级别 git config <span class="params">--system</span> <span class="params">--list</span> local级别 git config <span class="params">--local</span>  <span class="params">--list</span></span><br></pre></td></tr></table></figure>
-<h1 id="Git文件操作"><a href="#Git文件操作" class="headerlink" title="Git文件操作"></a>Git文件操作</h1></li>
+
+</li>
+</ul>
+<h1 id="Git文件操作"><a href="#Git文件操作" class="headerlink" title="Git文件操作"></a>Git文件操作</h1><ul>
 <li>新建版本库<br>在日常工作用，你可能会遇到文件保存丢失的情况，想象一下，如果有个照相机给文件拍了一个快照，那就可以根据这个快照恢复文件；版本库的目的就是记录你对文件所做的编辑修改，方便回溯历史。<br>切换到一个空文件夹，使用以下命令:<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git init</span></span><br></pre></td></tr></table></figure>
 <img src="https://upload-images.jianshu.io/upload_images/14975804-ab87ee632c8688a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="操作步骤"><br>通过上图你会发现<strong>git init</strong>命令会在当前文件夹中生成<strong>.git</strong>的文件夹。这个文件夹包含了以下信息：<br><img src="https://upload-images.jianshu.io/upload_images/14975804-46036f49f4665086.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=".git 文件信息"><br>先不用着急了解这个文件夹，只要记住你的所有操作记录会被记录在这里就可以了。感兴趣的可以参考一下<a href="https://www.cnblogs.com/gscienty/p/7904518.html" target="_blank" rel="noopener">从.git文件夹探析git实现原理</a>。<br>到现在为止，这个<strong>TestRepo</strong>文件夹成了一个可以被管理的git仓库。下面咱们来添加一个文件到该文件夹下。</li>
 <li>文件修改<br>首先我添加了一个文件<strong>MyFirstFile</strong>到该文件夹下：<br><img src="https://upload-images.jianshu.io/upload_images/14975804-468f57f2cf88451f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="文件内容"><br>Git中有工作区和暂存区的概念：<br>工作区：简单理解为你的工作目录，比如TestRepo文件夹，所有的操作都会在这个文件夹下进行。<br>暂存区：上面的<strong>git init</strong>命令生成了<strong>.git</strong>的文件夹，可以裂解为Git的版本库，在这个库中有个暂存区和分支，工作区完成的修改，想要添加到Git中管理，需要先使用<strong>git add</strong>命令添加到暂存区，然后<strong>git commit</strong>提交到当前操作的分支。为什么会有暂存区这个东西呢？简单理解就是暂存区记录的文件，在工作区可能还需要修改，最终一次性提交文件。<br>查看当前状态：<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git status</span></span><br></pre></td></tr></table></figure>
@@ -418,8 +421,10 @@
 <img src="https://upload-images.jianshu.io/upload_images/14975804-9e22498104f179f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="回退文件"><br>你会发现这时已经成功的回退到了上个版本；通常的你可以使用<strong>git reset –hard HEAD^</strong>回退上个版本，<strong>HEAD</strong>表示当前操作的最新提交版本，也就是<strong>commit 9043e07387edc724198bd495816c33b02c8fbaaf (HEAD -&gt; master)</strong>提交记录，<strong>HEAD^</strong>表示上一个提交版本，上上个版本表示<strong>HEAD^^</strong>,以此类推，所以上面的命令也可以表示为：<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset <span class="params">--hard</span> HEAD^<span class="string">//</span>回退到上一个版本</span><br></pre></td></tr></table></figure>
 使用Git，工作区、暂存区的内容也可以回退，这样以后就再不用怕文件误操作了。<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- <span class="keyword">file</span> <span class="comment">//撤销工作区的修改</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">reset</span> <span class="keyword">HEAD</span> <span class="keyword">file</span> //撤销暂存区的修改</span><br></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>这篇着重介绍了一下使用Git进行文件操作（仓库初始化、文件新增、文件修改、回退历史记录），下一篇会从Git的分支管理来介绍，感谢支持！</li>
+
+</li>
 </ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这篇着重介绍了一下使用Git进行文件操作（仓库初始化、文件新增、文件修改、回退历史记录），下一篇会从Git的分支管理来介绍，感谢支持！</p>
 
 
         <hr>

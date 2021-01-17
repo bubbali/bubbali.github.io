@@ -210,14 +210,14 @@
 
           
           <li>
-            <a href="/categories/">Categories</a>
+            <a href="/about/">About</a>
           </li>
           
           
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/categories/">Categories</a>
           </li>
           
           
@@ -406,7 +406,9 @@ Importantly. Not only you can develop based on the authed org,  but also you can
 It’s amazing. Why we can do this? That’s because of the access token stored in our local machine. you can find the answer in the next section.</li>
 </ul>
 <ol start="2">
-<li>Local file Configure<br>Once we auth an org successfully. We can use it permanently unless you revoke it. Let’s see what happened after the auth process. After you auth the org. The org of the definition file will be stored in the root/.sfdx direction. you can find a folder named .sfdx in your root direction. open it by vscode.<br><img src="https://upload-images.jianshu.io/upload_images/14975804-82146d80855cd027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Org&#39;s definition"><br>You should pay attention to the access token、refresh token and client id. Through this information. The local machine could request a connection with the remote server resource. for example. you can request any rest api source. and not limit development. <h1 id="Developer-Process"><a href="#Developer-Process" class="headerlink" title="Developer Process"></a>Developer Process</h1></li>
+<li>Local file Configure<br>Once we auth an org successfully. We can use it permanently unless you revoke it. Let’s see what happened after the auth process. After you auth the org. The org of the definition file will be stored in the root/.sfdx direction. you can find a folder named .sfdx in your root direction. open it by vscode.<br><img src="https://upload-images.jianshu.io/upload_images/14975804-82146d80855cd027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Org&#39;s definition"><br>You should pay attention to the access token、refresh token and client id. Through this information. The local machine could request a connection with the remote server resource. for example. you can request any rest api source. and not limit development. </li>
+</ol>
+<h1 id="Developer-Process"><a href="#Developer-Process" class="headerlink" title="Developer Process"></a>Developer Process</h1><ol>
 <li>Create local project<br>Before we start development. The second thing is that you should create a project.<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sfdx <span class="string">force:</span><span class="string">create:</span>project  -n projectName -x <span class="comment">//Generates a default manifest (package.xml) for fetching Apex, Visualforce, Lightning web components, Aura components, and static resources.</span></span><br></pre></td></tr></table></figure>
 <img src="https://upload-images.jianshu.io/upload_images/14975804-39adec5a07da5ec5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Create project"><br>We open it in vscode. There is no connection with the remote org currently. So we will set an org for this project.</li>
 <li>Set Default Org<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sfdx force:config:<span class="builtin-name">set</span> <span class="attribute">defaultusername</span>=BubbaTest</span><br></pre></td></tr></table></figure>

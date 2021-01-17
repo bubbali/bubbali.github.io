@@ -210,14 +210,14 @@
 
           
           <li>
-            <a href="/categories/">Categories</a>
+            <a href="/about/">About</a>
           </li>
           
           
 
           
           <li>
-            <a href="/about/">About</a>
+            <a href="/categories/">Categories</a>
           </li>
           
           
@@ -406,7 +406,7 @@
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">trigger</span> MyFirstTriggerForAccount <span class="keyword">on</span> Account(<span class="keyword">before</span> <span class="keyword">insert</span>)&#123;</span><br><span class="line">   code_block</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;code_block编写完成后，将会是下面的样子：</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">trigger</span> MyFirstTriggerForAccount <span class="keyword">on</span> Account(<span class="keyword">before</span> <span class="keyword">insert</span>)&#123;</span><br><span class="line">    <span class="keyword">for</span>(Account a : <span class="keyword">Trigger</span>.<span class="built_in">New</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(a.Description == <span class="keyword">null</span> || a.Description == <span class="string">''</span>)&#123;</span><br><span class="line">            a.Description =  <span class="string">'New'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##2.7 这一节总结<br>&emsp;&emsp;这一节分为三篇文章，持续介绍了初识Salesforce、Apex的语法与使用、Visualforce Page的开发、以及Trigger的使用等内容。基本覆盖了在Classic模式下面开发Salesforce的常见内容。相比较于传统Java、Python开发，在自定义Salesforce开发过程中，可能不会有复杂的技术与算法，但是总有一些问题会让你抓耳挠腮。更多的场景可能来自于Salesforce天生的一些特性。作为一个多租户平台系统，在资源有限的情况下，能够平稳高效的服务于全球各行业、各领域的上万家客户，给我的个人感受是Salesforce一直在进步，除了在不断完善自己的产品和开发生态外，还能够紧随市场变化创造新的产品。这样一个有生命力的平台，纵然它有诸多的限制，我想还是值得我们去拥抱并且热爱它。</p>
+<h2 id="2-7-这一节总结"><a href="#2-7-这一节总结" class="headerlink" title="2.7 这一节总结"></a>2.7 这一节总结</h2><p>&emsp;&emsp;这一节分为三篇文章，持续介绍了初识Salesforce、Apex的语法与使用、Visualforce Page的开发、以及Trigger的使用等内容。基本覆盖了在Classic模式下面开发Salesforce的常见内容。相比较于传统Java、Python开发，在自定义Salesforce开发过程中，可能不会有复杂的技术与算法，但是总有一些问题会让你抓耳挠腮。更多的场景可能来自于Salesforce天生的一些特性。作为一个多租户平台系统，在资源有限的情况下，能够平稳高效的服务于全球各行业、各领域的上万家客户，给我的个人感受是Salesforce一直在进步，除了在不断完善自己的产品和开发生态外，还能够紧随市场变化创造新的产品。这样一个有生命力的平台，纵然它有诸多的限制，我想还是值得我们去拥抱并且热爱它。</p>
 
 
         <hr>
@@ -549,7 +549,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-6-Trigger"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">2.6 Trigger</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-6-1-Trigger类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">2.6.1 Trigger类型</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-6-2-Trigger语法"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2.6.2 Trigger语法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-6-3-举例说明"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">2.6.3 举例说明</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-6-Trigger"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">2.6 Trigger</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-6-1-Trigger类型"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">2.6.1 Trigger类型</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-6-2-Trigger语法"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">2.6.2 Trigger语法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-6-3-举例说明"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">2.6.3 举例说明</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-7-这一节总结"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">2.7 这一节总结</span></a></li></ol>
         
         </div>
       </aside>
