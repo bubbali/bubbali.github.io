@@ -418,7 +418,7 @@
 </li>
 <li><ol start="2">
 <li>生成private key，存储在server.key文件<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">openssl</span> <span class="selector-tag">genrsa</span> <span class="selector-tag">-des3</span> <span class="selector-tag">-passout</span> <span class="selector-tag">pass</span><span class="selector-pseudo">:SomePassword</span> <span class="selector-tag">-out</span> <span class="selector-tag">server</span><span class="selector-class">.pass</span><span class="selector-class">.key</span> 2048</span><br><span class="line"><span class="selector-tag">openssl</span> <span class="selector-tag">rsa</span> <span class="selector-tag">-passin</span> <span class="selector-tag">pass</span><span class="selector-pseudo">:SomePassword</span> <span class="selector-tag">-in</span> <span class="selector-tag">server</span><span class="selector-class">.pass</span><span class="selector-class">.key</span> <span class="selector-tag">-out</span> <span class="selector-tag">server</span><span class="selector-class">.key</span></span><br></pre></td></tr></table></figure>
-<img src="GenerateServerKye.png" alt="生成server.key"><br>现在<em>testJWT</em>文件夹下有两个文件<em>server.key、server.pass.key</em>，<em>server.pass.key</em>文件不会再用到，可以将其删除。</li>
+<img src="GenerateServerKey.png" alt="生成server.key"><br>现在<em>testJWT</em>文件夹下有两个文件<em>server.key、server.pass.key</em>，<em>server.pass.key</em>文件不会再用到，可以将其删除。</li>
 </ol>
 </li>
 <li><ol start="3">
