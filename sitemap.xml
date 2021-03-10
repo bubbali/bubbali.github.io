@@ -207,14 +207,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Unit-Test/</loc>
+    <loc>http://yoursite-url/tags/Administrator/</loc>
     <lastmod>2021-03-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Administrator/</loc>
+    <loc>http://yoursite-url/tags/Unit-Test/</loc>
     <lastmod>2021-03-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -228,14 +228,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/SOAP-Integration/</loc>
+    <loc>http://yoursite-url/tags/Salesforce/</loc>
     <lastmod>2021-03-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/Salesforce/</loc>
+    <loc>http://yoursite-url/tags/SOAP-Integration/</loc>
     <lastmod>2021-03-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

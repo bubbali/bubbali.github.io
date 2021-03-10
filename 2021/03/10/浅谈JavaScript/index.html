@@ -426,6 +426,7 @@
 <li>JS不仅可以运行在浏览器端的JS引擎中，还可以运行在装有Node环境的机器上，在后端服务器中也看到JS的身影。</li>
 </ul>
 <p>这张图可以帮助大家更好的了解JS的发展历史：<br><img src="https://upload-images.jianshu.io/upload_images/14975804-e7a7846ffc68c943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JS发展历史"></p>
+<p><img src="JSHistory.png" alt="JS发展历史"></p>
 <p>相信大家对JS发展路径有了初步的认识，接下来聊一下JS这门语言特性。</p>
 <h1 id="JavaScript语言特性"><a href="#JavaScript语言特性" class="headerlink" title="JavaScript语言特性"></a>JavaScript语言特性</h1><p>首先我们来看一下来自<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/About_JavaScript" target="_blank" rel="noopener">MDN</a>对JS的定义：</p>
 <blockquote>
@@ -446,7 +447,9 @@
 <li>处理前端用户请求，与服务器交互，异步请求服务器资源。</li>
 </ul>
 <p>到现在为止，以上是关于JS的特性和作用描述，下面通过常用数据类型、事件和函数、异步特性这三方面帮助大家进一步认识JS。</p>
-<h2 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h2><p>与大部分编程语言类似，JS支持基本数据类型和引用数据类型，两者的区别在于<strong>值是否存在于堆区（heap）</strong>,如下图所示：<br><img src="https://upload-images.jianshu.io/upload_images/14975804-4dcbc94ed7d45af5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JS内存分配模型"></p>
+<h2 id="常用数据类型"><a href="#常用数据类型" class="headerlink" title="常用数据类型"></a>常用数据类型</h2><p>与大部分编程语言类似，JS支持基本数据类型和引用数据类型，两者的区别在于<strong>值是否存在于堆区（heap）</strong>,如下图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14975804-4dcbc94ed7d45af5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JS内存分配模型"></p>
+<p><img src="JSMemoryModel.png" alt="JS内存分配模型"></p>
 <p>可以看到JS内存空间分配有两部分组成：</p>
 <ul>
 <li>栈区（stack） - 有序排列，大小固定</li>
@@ -465,6 +468,7 @@
 
 <p>在ES6中除了支持var，还支持以下let、const关键字：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-386697d9e3e1cd44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JS支持的关键字"></p>
+<p><img src="JSSupportedkeyword.png" alt="JS支持的关键字"></p>
 <p>这三者的区别在于作用域和值是否可被修改，let和const都是block级别的，执行上面同样的代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myVar = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">   <span class="keyword">let</span> myVar = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(myVar);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(myVar); <span class="comment">//Output 1, Expected 1</span></span><br></pre></td></tr></table></figure>
 
@@ -523,6 +527,8 @@
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="keyword">increment</span>(incrementBy)&#123;</span><br><span class="line">    this.aValue = this.aValue + incrementBy;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//Demo <span class="number">1</span></span><br><span class="line">var thisPointToObject = &#123;</span><br><span class="line">    aValue: <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line">thisPointToObject.<span class="keyword">increment</span> = <span class="keyword">increment</span>;</span><br><span class="line">thisPointToObject.<span class="keyword">increment</span>(<span class="number">2</span>);//this <span class="type">point</span> <span class="keyword">to</span> <span class="keyword">current</span> obj</span><br><span class="line">console.log(thisPointToObject.aValue); // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">//Demo <span class="number">2</span></span><br><span class="line"><span class="keyword">global</span>.aValue = <span class="number">6</span>;</span><br><span class="line"><span class="keyword">increment</span>(<span class="number">2</span>);//this <span class="type">point</span> <span class="keyword">to</span> <span class="keyword">global</span> project</span><br><span class="line">console.log(<span class="keyword">global</span>.aValue ); // <span class="number">8</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-b0a7b88d6e25784b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="this keyword point to object"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-893e28b055614159.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="this keyword point to global project"></p>
+<p><img src="thispointtoobject.png" alt="this keyword point to object"></p>
+<p><img src="thispointtoproject.png" alt="this keyword point to global project"></p>
 <h2 id="Events-amp-Function"><a href="#Events-amp-Function" class="headerlink" title="Events &amp; Function"></a>Events &amp; Function</h2><p>前面介绍了JS的数据类型包含基本数据类型和引用数据类型，再结合程序设计语言的三大基本结构（顺序结构、选择分支结构、循环结构），我们就可以编写复杂的业务程序，在此之前，有必要了解一下JS中的事件和函数，这两者是在浏览器端是相互依存，浏览器端事件的触发引起函数的调用，才能真正发挥JS的作用，下面三点是需要了解的：</p>
 <ol>
 <li><p>JS中的事件是由浏览器通知的<br>网页上按钮的点击、输入框的变化、光标的移动，都是由DOM组件发出的事件，这些事件会传递给JS引擎，调用对应的方法；</p>
@@ -546,7 +552,9 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"clicker"</span>&gt;</span></span><br><span class="line">            Click me</span><br><span class="line">        <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span>        	</span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> handleClick = <span class="function"><span class="keyword">function</span><span class="params">(event)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(event.type);  <span class="comment">//output click</span></span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> button = <span class="built_in">document</span>.getElementById(<span class="string">"clicker"</span>);</span></span><br><span class="line"><span class="actionscript">        button.addEventListener(<span class="string">"click"</span>, handleClick);</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//anonymous functions </span></span></span><br><span class="line"><span class="actionscript">        button.addEventListener(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span><span class="params">(event)</span></span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(event.type);  <span class="comment">//output click</span></span></span><br><span class="line">        &#125;);</span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="异步特性"><a href="#异步特性" class="headerlink" title="异步特性"></a>异步特性</h2><p>当我们访问网站的时候，如果页面总是卡顿，总会降低用户访问网站的兴致，前端页面会包含很多JS脚本；<strong>JS是单线程的一门语言，意味着一个时间点只能处理一件事情</strong>，比如现在页面上一个按钮绑定了后台服务器方法，如果用户点击按钮后，需要等待服务器处理结果才能进行其他操作，这样的网站用户体验十分糟糕，针对这种情况，需要保证页面不会发生阻塞，现在有必要引入异步编程，咱们简单看一下JS是怎么处理的？</p>
-<p>通过下面的<a href="http://latentflip.com/loupe/?code=c2V0VGltZW91dChmdW5jdGlvbigpewogIGNvbnNvbGUubG9nKCJUaGlzIGNvbWVzIGZpcnN0Iik7Cn0sIDUwMDApOwpjb25zb2xlLmxvZygiVGhpcyBjb21lcyBzZWNvbmQiKTsKCi8vb3V0cHV0IGluIGNvbnNvbGUKLy8gIlRoaXMgY29tZXMgc2Vjb25kIgovLyAiVGhpcyBjb21lcyBmaXJzdCI%3D!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D" target="_blank" rel="noopener">例子</a>来回顾一下JSRunning引擎的运行:<br><img src="https://upload-images.jianshu.io/upload_images/14975804-4224c37d232d0897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JSEventLoop"></p>
+<p>通过下面的<a href="http://latentflip.com/loupe/?code=c2V0VGltZW91dChmdW5jdGlvbigpewogIGNvbnNvbGUubG9nKCJUaGlzIGNvbWVzIGZpcnN0Iik7Cn0sIDUwMDApOwpjb25zb2xlLmxvZygiVGhpcyBjb21lcyBzZWNvbmQiKTsKCi8vb3V0cHV0IGluIGNvbnNvbGUKLy8gIlRoaXMgY29tZXMgc2Vjb25kIgovLyAiVGhpcyBjb21lcyBmaXJzdCI%3D!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D" target="_blank" rel="noopener">例子</a>来回顾一下JSRunning引擎的运行:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14975804-4224c37d232d0897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JSEventLoop"></p>
+<p><img src="JSRuntime.png" alt="JSEventLoop"></p>
 <ul>
 <li>一般情况下，JS引擎会依次顺序执行代码片段；</li>
 <li>如果出现会导致浏览器阻塞的操作，比如请求后台服务器、获取数据库数据等耗时动作，JS引擎不会马上执行，而是将任务添加到<strong>Web API</strong>中，待异步操作完成后，将回调方法放入<strong>Callback Queue</strong>中；</li>
@@ -560,19 +568,27 @@
 </ol>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-fb4677bf1c038335.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Step 1.1"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-f1239c2963758bd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Step 1.2"></p>
+<p><img src="Process1.1.png" alt="Step 1.1"></p>
+<p><img src="Process1.2.png" alt="Step 1.2"></p>
 <ol start="2">
 <li>在Web APIs执行异步任务的过程中，并不会阻碍JS引擎执行接下来的代码，可以看到Stack中加载了<em>console.log(“This comes second”)</em>的任务，并将其打印在控制台中；</li>
 </ol>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-f5121d859fa782ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Step 2.1"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-25fff07a81427a22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Step 2.2"></p>
+<p><img src="Process2.1.png" alt="Step 2.1"></p>
+<p><img src="Process2.2.png" alt="Step 2.2"></p>
 <ol start="3">
 <li>让我们继续等待异步执行完成</li>
 </ol>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-a074f187c20b973b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Step 3.1"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-19b42752f9989a4f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Step 3.2"></p>
+<p><img src="Process3.1.png" alt="Step 3.1"></p>
+<p><img src="Process3.2.png" alt="Step 3.2"></p>
 <p>当异步任务完成后，我们可以看到这个异步操作放入了Callback Queue中，接下来等待Event Loop将该操作放入Stack中，如下图所示：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-8f276cfb4fcb9ae4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Step 3.3"></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14975804-05560ffb84494ddd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Step 3.4"></p>
+<p><img src="Process3.4.png" alt="Step 3.3"></p>
+<p><img src="Process3.4.png" alt="Step 3.4"></p>
 <p>当Stack、Web APIs、Callback Queue都为空时，这个时候我们可以认为JS引擎完成了上述代码的执行，注意当前我们将timer时间设置为5秒，即使设置为0秒，JS引擎也会将该操作放入到Web APIs中，输出结果也是一样的。</p>
 <p>了解JS实现异步的基本原理后，我们可以看到JS中常见的回调函数（异步回调）其实是在Web APIs执行完异步任务后，Event Loop会将回调函数放入到Stack中执行，在代码编写中，当遇到异步编程时，这个模型更有助于理解JS的执行过程和书写更有效的代码。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>现如今，JS的发展速度越来越迅猛，在前后端领域都扮演了重要的角色，在我个人看来，有必要重新审视这门编程语言；感谢您的阅读，文中如有不足的地方，请大家更正，希望文中内容给您带来思考的同时，可以将其思考内容分享给大家。</p>
