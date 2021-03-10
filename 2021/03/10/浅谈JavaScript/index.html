@@ -575,7 +575,7 @@
 <p><img src="Process3.1.png" alt="Step 3.1"></p>
 <p><img src="Process3.2.png" alt="Step 3.2"></p>
 <p>当异步任务完成后，我们可以看到这个异步操作放入了Callback Queue中，接下来等待Event Loop将该操作放入Stack中，如下图所示：</p>
-<p><img src="Process3.4.png" alt="Step 3.3"></p>
+<p><img src="Process3.3.png" alt="Step 3.3"></p>
 <p><img src="Process3.4.png" alt="Step 3.4"></p>
 <p>当Stack、Web APIs、Callback Queue都为空时，这个时候我们可以认为JS引擎完成了上述代码的执行，注意当前我们将timer时间设置为5秒，即使设置为0秒，JS引擎也会将该操作放入到Web APIs中，输出结果也是一样的。</p>
 <p>了解JS实现异步的基本原理后，我们可以看到JS中常见的回调函数（异步回调）其实是在Web APIs执行完异步任务后，Event Loop会将回调函数放入到Stack中执行，在代码编写中，当遇到异步编程时，这个模型更有助于理解JS的执行过程和书写更有效的代码。</p>
